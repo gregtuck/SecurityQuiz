@@ -11,8 +11,7 @@ using System.Data.SqlClient;
 using System.Data.SqlTypes;
 
 namespace SecurityQuiz
-{
-    
+{  
     public partial class PLAY : Form
     {
         // initialise string variables as default
@@ -23,11 +22,8 @@ namespace SecurityQuiz
         Random rnd = new Random();
 
         int question;
-
         int virus;
-
         int Reputation;
-
         public void decider(int q)
         {
             if (question == 1)
@@ -42,8 +38,7 @@ namespace SecurityQuiz
             {
                 changeScoreNeg();
             }
-        }
-        
+        }       
         public void loseCheck()
         {
             if (virus >= 100 | Reputation >= 100)
@@ -55,22 +50,16 @@ namespace SecurityQuiz
             {
                 MessageBox.Show("Too Low");
             }
-
         }
-
-
         public int RandomQ(int lastQuestion)
-        {
-            
-
-            question = rnd.Next(1, 9);
+        {           
+            question = rnd.Next(1, 10);
 
             if (question == lastQuestion)
             {
                 return RandomQ(question);
             }
             else
-
             return question;
         }
 
@@ -80,10 +69,10 @@ namespace SecurityQuiz
             int alterReputationNeg = 0;
 
             SqlConnection con = new SqlConnection(@"Data Source = vmwsql07.uad.ac.uk; Initial Catalog = sql1601097; User ID = sql1601097; Password = JQD1+v==");
+
             con.Open();
 
             SqlCommand cmd = new SqlCommand("SELECT reputation, virus FROM GAMESEC_APP.QUESTIONS WHERE question_id ='" + question + "'", con);
-
             SqlDataReader sdl = cmd.ExecuteReader();
 
             while (sdl.Read())
@@ -91,15 +80,10 @@ namespace SecurityQuiz
                 alterReputationNeg = (int)sdl[0];
                 alterVirusNeg = (int)sdl[1];
             }
-
             Reputation += alterReputationNeg;
             virus -= alterVirusNeg;
-
             virusScore.Text = virus.ToString();
             reputationScore.Text = Reputation.ToString();
-
-
-
         }
 
         public void changeScore()
@@ -108,10 +92,10 @@ namespace SecurityQuiz
             int alterReputation =0;
 
             SqlConnection con = new SqlConnection(@"Data Source = vmwsql07.uad.ac.uk; Initial Catalog = sql1601097; User ID = sql1601097; Password = JQD1+v==");
+
             con.Open();
 
             SqlCommand cmd = new SqlCommand("SELECT reputation, virus FROM GAMESEC_APP.QUESTIONS WHERE question_id ='" + question + "'", con);
-
             SqlDataReader sdl = cmd.ExecuteReader();
 
             while (sdl.Read())
@@ -119,10 +103,8 @@ namespace SecurityQuiz
                 alterReputation = (int)sdl[0];
                 alterVirus = (int)sdl[1];
             }
-
             Reputation -= alterReputation;
             virus += alterVirus;
-
             virusScore.Text = virus.ToString();
             reputationScore.Text = Reputation.ToString();
         }
@@ -146,9 +128,7 @@ namespace SecurityQuiz
                     button1_text = sdl[2].ToString();
                     button2_text = sdl[3].ToString();
                 }
-
                 con.Close();
-
                 Question.Text = question_text;
                 button1.Text = button1_text;
                 button2.Text = button2_text;
@@ -156,33 +136,19 @@ namespace SecurityQuiz
             catch (Exception)
             {
             }
-
         }
-
-
-
         public PLAY()
         {
             InitializeComponent();
-
             virus = 50;
             Reputation = 50;
-
             virusScore.Text = virus.ToString();
-            reputationScore.Text = Reputation.ToString();
-            
-           
+            reputationScore.Text = Reputation.ToString();                       
         }
-
-       
-
         private void PLAY_Load(object sender, EventArgs e)
         {
-
             //RandomNumber randomNumber(int min, int max);
-
-            getQuestions();
-            
+            getQuestions();            
         }
 
         private void button1_Click(object sender, EventArgs e)
