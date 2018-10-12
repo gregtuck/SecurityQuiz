@@ -24,12 +24,20 @@ namespace SecurityQuiz
 
         int question;
 
-        int virus = 50;
+        int virus;
 
-        int Reputation = 50;
+        int Reputation;
 
         
+        public void loseCheck()
+        {
+            if (virus == 100 | Reputation == 100)
+            {
+                MessageBox.Show("too high");
 
+            }
+
+        }
 
         public int RandomQ()
         {
@@ -40,8 +48,27 @@ namespace SecurityQuiz
 
         public void changeScore()
         {
+            int alterVirus =0;
+            int alterReputation =0;
+
             SqlConnection con = new SqlConnection(@"Data Source = vmwsql07.uad.ac.uk; Initial Catalog = sql1601097; User ID = sql1601097; Password = JQD1+v==");
             con.Open();
+
+            SqlCommand cmd = new SqlCommand("SELECT reputation, virus FROM GAMESEC_APP.QUESTIONS WHERE question_id ='" + question + "'", con);
+
+            SqlDataReader sdl = cmd.ExecuteReader();
+
+            while (sdl.Read())
+            {
+                alterReputation = (int)sdl[0];
+                alterVirus = (int)sdl[1];
+            }
+
+            Reputation += alterReputation;
+            virus += alterVirus;
+
+            virusScore.Text = virus.ToString();
+            reputationScore.Text = Reputation.ToString();
 
 
 
@@ -85,6 +112,9 @@ namespace SecurityQuiz
         {
             InitializeComponent();
 
+            virus = 50;
+            Reputation = 50;
+
             virusScore.Text = virus.ToString();
             reputationScore.Text = Reputation.ToString();
             
@@ -104,11 +134,15 @@ namespace SecurityQuiz
 
         private void button1_Click(object sender, EventArgs e)
         {
+            changeScore();
+            loseCheck();
             getQuestions();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            changeScore();
+            loseCheck();
             getQuestions();
         }
     }
