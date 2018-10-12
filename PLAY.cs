@@ -28,6 +28,21 @@ namespace SecurityQuiz
 
         int Reputation;
 
+        public void decider(int q)
+        {
+            if (question == 1)
+            {
+                changeScoreNeg();
+            }
+            else if (question % 2 ==0)
+            {
+                changeScore();
+            }
+            else if (question % 3 == 0)
+            {
+                changeScoreNeg();
+            }
+        }
         
         public void loseCheck()
         {
@@ -44,6 +59,34 @@ namespace SecurityQuiz
             question = rnd.Next(1, 9);
 
             return question;
+        }
+
+        public void changeScoreNeg()
+        {
+            int alterVirusNeg = 0;
+            int alterReputationNeg = 0;
+
+            SqlConnection con = new SqlConnection(@"Data Source = vmwsql07.uad.ac.uk; Initial Catalog = sql1601097; User ID = sql1601097; Password = JQD1+v==");
+            con.Open();
+
+            SqlCommand cmd = new SqlCommand("SELECT reputation, virus FROM GAMESEC_APP.QUESTIONS WHERE question_id ='" + question + "'", con);
+
+            SqlDataReader sdl = cmd.ExecuteReader();
+
+            while (sdl.Read())
+            {
+                alterReputationNeg = (int)sdl[0];
+                alterVirusNeg = (int)sdl[1];
+            }
+
+            Reputation += alterReputationNeg;
+            virus -= alterVirusNeg;
+
+            virusScore.Text = virus.ToString();
+            reputationScore.Text = Reputation.ToString();
+
+
+
         }
 
         public void changeScore()
@@ -64,14 +107,11 @@ namespace SecurityQuiz
                 alterVirus = (int)sdl[1];
             }
 
-            Reputation += alterReputation;
+            Reputation -= alterReputation;
             virus += alterVirus;
 
             virusScore.Text = virus.ToString();
             reputationScore.Text = Reputation.ToString();
-
-
-
         }
 
         public void getQuestions()
@@ -134,15 +174,15 @@ namespace SecurityQuiz
 
         private void button1_Click(object sender, EventArgs e)
         {
-            changeScore();
-            loseCheck();
+            decider(question);
+            //loseCheck();
             getQuestions();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            changeScore();
-            loseCheck();
+            decider(question);
+            //loseCheck();
             getQuestions();
         }
     }
