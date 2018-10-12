@@ -26,15 +26,11 @@ namespace SecurityQuiz
         int Reputation;
         public void decider(int q)
         {
-            if (question == 1)
-            {
-                changeScoreNeg();
-            }
-            else if (question % 2 ==0)
+            if (question % 2 == 0)
             {
                 changeScore();
             }
-            else if (question % 3 == 0)
+            else if (question % 2 == 1)
             {
                 changeScoreNeg();
             }
