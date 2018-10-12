@@ -46,17 +46,30 @@ namespace SecurityQuiz
         
         public void loseCheck()
         {
-            if (virus == 100 | Reputation == 100)
+            if (virus >= 100 | Reputation >= 100)
             {
                 MessageBox.Show("too high");
 
             }
+            else if (virus <=0 | Reputation <=0)
+            {
+                MessageBox.Show("Too Low");
+            }
 
         }
 
-        public int RandomQ()
+
+        public int RandomQ(int lastQuestion)
         {
+            
+
             question = rnd.Next(1, 9);
+
+            if (question == lastQuestion)
+            {
+                return RandomQ(question);
+            }
+            else
 
             return question;
         }
@@ -120,7 +133,7 @@ namespace SecurityQuiz
             {
                 SqlConnection con = new SqlConnection(@"Data Source = vmwsql07.uad.ac.uk; Initial Catalog = sql1601097; User ID = sql1601097; Password = JQD1+v==");
 
-                RandomQ();
+                RandomQ(question);
 
                 con.Open();
 
@@ -175,14 +188,14 @@ namespace SecurityQuiz
         private void button1_Click(object sender, EventArgs e)
         {
             decider(question);
-            //loseCheck();
+            loseCheck();
             getQuestions();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             decider(question);
-            //loseCheck();
+            loseCheck();
             getQuestions();
         }
     }
