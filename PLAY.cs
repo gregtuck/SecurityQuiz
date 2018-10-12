@@ -24,6 +24,8 @@ namespace SecurityQuiz
         int question;
         int virus;
         int Reputation;
+
+        //if the question is odd or even then the respective function is called to change virus/Reputation scores
         public void decider(int q)
         {
             if (question % 2 == 0)
@@ -35,6 +37,8 @@ namespace SecurityQuiz
                 changeScoreNeg();
             }
         }       
+
+        // checks if player has gone too high or low
         public void loseCheck()
         {
             if (virus >= 100 | Reputation >= 100)
@@ -47,6 +51,8 @@ namespace SecurityQuiz
                 MessageBox.Show("Too Low");
             }
         }
+
+        // selects a random question number before calling the function for the SQL query, also ensures that no questions are repeated after the other
         public int RandomQ(int lastQuestion)
         {           
             question = rnd.Next(1, 10);
