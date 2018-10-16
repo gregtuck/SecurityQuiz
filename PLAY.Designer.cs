@@ -40,67 +40,85 @@
             // Question
             // 
             this.Question.AutoSize = true;
-            this.Question.Location = new System.Drawing.Point(203, 108);
+            this.Question.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Question.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.Question.Location = new System.Drawing.Point(309, 114);
             this.Question.Name = "Question";
-            this.Question.Size = new System.Drawing.Size(0, 13);
+            this.Question.Size = new System.Drawing.Size(0, 18);
             this.Question.TabIndex = 0;
             // 
             // button1
             // 
+            this.button1.BackColor = System.Drawing.Color.Salmon;
             this.button1.Location = new System.Drawing.Point(87, 220);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(116, 78);
             this.button1.TabIndex = 1;
             this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
+            this.button2.BackColor = System.Drawing.Color.Salmon;
             this.button2.Location = new System.Drawing.Point(541, 220);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(116, 78);
             this.button2.TabIndex = 2;
             this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(121, 13);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label1.Location = new System.Drawing.Point(104, 11);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(30, 13);
+            this.label1.Size = new System.Drawing.Size(66, 25);
             this.label1.TabIndex = 3;
             this.label1.Text = "Virus";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(566, 13);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label2.Location = new System.Drawing.Point(536, 11);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(59, 13);
+            this.label2.Size = new System.Drawing.Size(126, 25);
             this.label2.TabIndex = 4;
             this.label2.Text = "Reputation";
             // 
             // virusScore
             // 
-            this.virusScore.Location = new System.Drawing.Point(124, 39);
+            this.virusScore.BackColor = System.Drawing.SystemColors.InfoText;
+            this.virusScore.Font = new System.Drawing.Font("Courier New", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.virusScore.ForeColor = System.Drawing.Color.Red;
+            this.virusScore.Location = new System.Drawing.Point(114, 50);
             this.virusScore.Name = "virusScore";
-            this.virusScore.Size = new System.Drawing.Size(27, 20);
+            this.virusScore.Size = new System.Drawing.Size(56, 38);
             this.virusScore.TabIndex = 5;
+            this.virusScore.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // reputationScore
             // 
-            this.reputationScore.Location = new System.Drawing.Point(579, 39);
+            this.reputationScore.BackColor = System.Drawing.SystemColors.MenuText;
+            this.reputationScore.Font = new System.Drawing.Font("Courier New", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.reputationScore.ForeColor = System.Drawing.Color.Lime;
+            this.reputationScore.Location = new System.Drawing.Point(570, 50);
             this.reputationScore.Name = "reputationScore";
-            this.reputationScore.Size = new System.Drawing.Size(27, 20);
+            this.reputationScore.Size = new System.Drawing.Size(56, 38);
             this.reputationScore.TabIndex = 6;
+            this.reputationScore.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // PLAY
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
+            this.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.reputationScore);
             this.Controls.Add(this.virusScore);
@@ -110,6 +128,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.Question);
             this.Name = "PLAY";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PLAY";
             this.Load += new System.EventHandler(this.PLAY_Load);
             this.ResumeLayout(false);

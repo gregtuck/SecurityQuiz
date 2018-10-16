@@ -14,10 +14,8 @@ namespace SecurityQuiz
 {  
     public partial class PLAY : Form
     {
-        // initialise string variables as default
-        string question_text = "Did not work :(";
-        string button1_text = "did not show";
-        string button2_text = "did not show";
+       
+        String answer = " ";
 
         Random rnd = new Random();
 
@@ -25,17 +23,21 @@ namespace SecurityQuiz
         int virus;
         int Reputation;
 
+        
+
         //if the question is odd or even then the respective function is called to change virus/Reputation scores
-        public void decider(int q)
+        public void decider(string response)
         {
-            if (question % 2 == 0)
+            if (response == answer)
             {
-                changeScore();
+                changeScoreRep();
             }
-            else if (question % 2 == 1)
+            else 
             {
-                changeScoreNeg();
+                changeScoreVir();
             }
+
+            
         }       
 
         // checks if player has gone too high or low
@@ -49,6 +51,7 @@ namespace SecurityQuiz
             else if (virus <=0 | Reputation <=0)
             {
                 MessageBox.Show("Too Low");
+                
             }
         }
 
@@ -65,46 +68,25 @@ namespace SecurityQuiz
             return question;
         }
 
-        public void changeScoreNeg()
+        public void changeScoreRep()
         {
-            int alterVirusNeg = 0;
-            int alterReputationNeg = 0;
+            int alterVirusNeg = 10;
+            int alterReputationNeg = 10;
 
-            SqlConnection con = new SqlConnection(@"Data Source = vmwsql07.uad.ac.uk; Initial Catalog = sql1601097; User ID = sql1601097; Password = JQD1+v==");
+            
 
-            con.Open();
-
-            SqlCommand cmd = new SqlCommand("SELECT reputation, virus FROM GAMESEC_APP.QUESTIONS WHERE question_id ='" + question + "'", con);
-            SqlDataReader sdl = cmd.ExecuteReader();
-
-            while (sdl.Read())
-            {
-                alterReputationNeg = (int)sdl[0];
-                alterVirusNeg = (int)sdl[1];
-            }
             Reputation += alterReputationNeg;
             virus -= alterVirusNeg;
             virusScore.Text = virus.ToString();
             reputationScore.Text = Reputation.ToString();
         }
 
-        public void changeScore()
+        public void changeScoreVir()
+            
         {
-            int alterVirus =0;
-            int alterReputation =0;
+            int alterReputation = 10;
+            int alterVirus = 10;
 
-            SqlConnection con = new SqlConnection(@"Data Source = vmwsql07.uad.ac.uk; Initial Catalog = sql1601097; User ID = sql1601097; Password = JQD1+v==");
-
-            con.Open();
-
-            SqlCommand cmd = new SqlCommand("SELECT reputation, virus FROM GAMESEC_APP.QUESTIONS WHERE question_id ='" + question + "'", con);
-            SqlDataReader sdl = cmd.ExecuteReader();
-
-            while (sdl.Read())
-            {
-                alterReputation = (int)sdl[0];
-                alterVirus = (int)sdl[1];
-            }
             Reputation -= alterReputation;
             virus += alterVirus;
             virusScore.Text = virus.ToString();
@@ -126,14 +108,15 @@ namespace SecurityQuiz
                 while (sdl.Read())
                 {
                     // change default values to show as text from question datatable
-                    question_text = sdl[1].ToString();
-                    button1_text = sdl[2].ToString();
-                    button2_text = sdl[3].ToString();
+                    Question.Text = sdl[1].ToString();
+                    button1.Text = sdl[2].ToString();
+                    button2.Text = sdl[3].ToString();
+
+                    answer = sdl[6].ToString();
                 }
                 con.Close();
-                Question.Text = question_text;
-                button1.Text = button1_text;
-                button2.Text = button2_text;
+                
+                
             }
             catch (Exception)
             {
@@ -155,14 +138,15 @@ namespace SecurityQuiz
 
         private void button1_Click(object sender, EventArgs e)
         {
-            decider(question);
+            
+            decider(button1.Text);
             loseCheck();
             getQuestions();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            decider(question);
+            decider(button2.Text);
             loseCheck();
             getQuestions();
         }
