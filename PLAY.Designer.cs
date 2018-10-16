@@ -50,6 +50,7 @@
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.Salmon;
+            this.button1.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(87, 220);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(116, 78);
@@ -61,6 +62,7 @@
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.Salmon;
+            this.button2.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.Location = new System.Drawing.Point(541, 220);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(116, 78);
@@ -74,7 +76,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label1.Location = new System.Drawing.Point(104, 11);
+            this.label1.Location = new System.Drawing.Point(94, 50);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(66, 25);
             this.label1.TabIndex = 3;
@@ -85,7 +87,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label2.Location = new System.Drawing.Point(536, 11);
+            this.label2.Location = new System.Drawing.Point(536, 50);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(126, 25);
             this.label2.TabIndex = 4;
@@ -96,7 +98,7 @@
             this.virusScore.BackColor = System.Drawing.SystemColors.InfoText;
             this.virusScore.Font = new System.Drawing.Font("Courier New", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.virusScore.ForeColor = System.Drawing.Color.Red;
-            this.virusScore.Location = new System.Drawing.Point(114, 50);
+            this.virusScore.Location = new System.Drawing.Point(99, 102);
             this.virusScore.Name = "virusScore";
             this.virusScore.Size = new System.Drawing.Size(56, 38);
             this.virusScore.TabIndex = 5;
@@ -107,7 +109,7 @@
             this.reputationScore.BackColor = System.Drawing.SystemColors.MenuText;
             this.reputationScore.Font = new System.Drawing.Font("Courier New", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.reputationScore.ForeColor = System.Drawing.Color.Lime;
-            this.reputationScore.Location = new System.Drawing.Point(570, 50);
+            this.reputationScore.Location = new System.Drawing.Point(570, 102);
             this.reputationScore.Name = "reputationScore";
             this.reputationScore.Size = new System.Drawing.Size(56, 38);
             this.reputationScore.TabIndex = 6;
