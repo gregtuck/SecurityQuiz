@@ -51,6 +51,7 @@
     <Compile Include="BADPASS.Designer.cs">
       <DependentUpon>BADPASS.cs</DependentUpon>
     </Compile>
+    <Compile Include="DB.cs" />
     <Compile Include="Demise.cs" />
     <Compile Include="MainLogin.cs">
       <SubType>Form</SubType>

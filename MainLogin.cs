@@ -15,21 +15,16 @@ namespace SecurityQuiz
 {
     public partial class MainLogin : Form
     {
+        DB connect = new DB();
         public MainLogin()
         {
-            InitializeComponent();
+            InitializeComponent();                    
         }
-
         private void LOGIN_Click(object sender, EventArgs e)
-        {
-            SqlConnection con = new SqlConnection(@"Data Source = vmwsql07.uad.ac.uk; Initial Catalog = sql1601097; User ID = sql1601097; Password = JQD1+v==");
-            SqlDataAdapter sda = new SqlDataAdapter("SELECT userid, username, passw FROM GAMESEC_APP.USERS WHERE username = '" + USERNAME.Text + "' AND passw = '" + PASSWORD.Text + "'", con);
-
-
-            con.Open();
-
+        {                     
+            connect.openConnection();
+            SqlDataAdapter sda = new SqlDataAdapter("SELECT userid, username, passw FROM GAMESEC_APP.USERS WHERE username = '" + USERNAME.Text + "' AND passw = '" + PASSWORD.Text + "'", connect.connectionString);
             DataTable dt = new DataTable();
-
             sda.Fill(dt);
 
             if (dt.Rows.Count >= 1)
@@ -42,11 +37,8 @@ namespace SecurityQuiz
             else
             {
                 MessageBox.Show("incorrect username/password");
-
-
             }
-            con.Close();
-
+            connect.closeConnnection();
         }
     }
 }
