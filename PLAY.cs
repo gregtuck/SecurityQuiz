@@ -105,26 +105,18 @@ namespace SecurityQuiz
         {
             try
             {
-                SqlConnection con = new SqlConnection(@"Data Source = vmwsql07.uad.ac.uk; Initial Catalog = sql1601097; User ID = sql1601097; Password = JQD1+v==");
+               
+                Question qston = new Question();
 
-                RandomQ(question);
+                qston.fetchQuestion();
 
-                con.Open();
-
-                SqlCommand cmd = new SqlCommand("SELECT * FROM GAMESEC_APP.QUESTIONS WHERE question_id ='" + question + "'", con);
-                SqlDataReader sdl = cmd.ExecuteReader();
-                while (sdl.Read())
-                {
-                    // change default values to show as text from question datatable
-                    Question.Text = sdl[1].ToString();
-                    button1.Text = sdl[2].ToString();
-                    button2.Text = sdl[3].ToString();
-
-                    answer = sdl[6].ToString();
-                }
-                con.Close();
+                Question.Text = qston.getQuestion();
+                button1.Text = qston.getOption1();
+                button2.Text = qston.getOption2();
+                answer = qston.getAnswer();
                 
-                
+
+
             }
             catch (Exception)
             {
