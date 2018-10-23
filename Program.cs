@@ -16,7 +16,7 @@ namespace SecurityQuiz
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new PLAY());
+            Application.Run(new MainLogin());
         }
     }
 }

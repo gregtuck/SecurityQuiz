@@ -43,14 +43,22 @@ namespace SecurityQuiz
         // checks if player has gone too high or low
         public void loseCheck()
         {
-            if (virus >= 100 | Reputation >= 100)
+            if (virus >= 100)
             {
-                MessageBox.Show("too high");
+                Demise dm = new Demise();
+
+                dm.fetchDemise();
+
+                string demiseT = dm.getdemiseText();
+
+                MessageBox.Show(demiseT.ToString());
+
+                //MessageBox.Show("You Lose");
 
             }
-            else if (virus <=0 | Reputation <=0)
+            else if (Reputation >=100)
             {
-                MessageBox.Show("Too Low");
+                MessageBox.Show("You win");
                 
             }
         }
