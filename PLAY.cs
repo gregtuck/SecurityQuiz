@@ -23,6 +23,11 @@ namespace SecurityQuiz
         int virus;
         int Reputation;
 
+        int gameScore;
+        
+        
+
+        
         
 
         //if the question is odd or even then the respective function is called to change virus/Reputation scores
@@ -31,6 +36,8 @@ namespace SecurityQuiz
             if (response == answer)
             {
                 changeScoreRep();
+               
+               
             }
             else 
             {
@@ -78,25 +85,26 @@ namespace SecurityQuiz
 
         public void changeScoreRep()
         {
-            int alterVirusNeg = 10;
-            int alterReputationNeg = 10;
-           
-            Reputation += alterReputationNeg;
-            virus -= alterVirusNeg;
+            
+
+            gameScore += 25;          
+            Reputation += 10;
+            virus -= 10;
             virusScore.Text = virus.ToString();
             reputationScore.Text = Reputation.ToString();
+            scorebox.Text = gameScore.ToString();
         }
 
         public void changeScoreVir()
             
         {
-            int alterReputation = 10;
-            int alterVirus = 10;
 
-            Reputation -= alterReputation;
-            virus += alterVirus;
+           
+            Reputation -= 10;
+            virus += 10;
             virusScore.Text = virus.ToString();
             reputationScore.Text = Reputation.ToString();
+            scorebox.Text = gameScore.ToString();
         }
 
         public void getQuestions()
@@ -121,8 +129,10 @@ namespace SecurityQuiz
             InitializeComponent();
             virus = 50;
             Reputation = 50;
+            gameScore = 0;
             virusScore.Text = virus.ToString();
-            reputationScore.Text = Reputation.ToString();                       
+            reputationScore.Text = Reputation.ToString();
+            scorebox.Text = gameScore.ToString();
         }
         private void PLAY_Load(object sender, EventArgs e)
         {            
@@ -139,6 +149,7 @@ namespace SecurityQuiz
             decider(button2.Text);
             loseCheck();
             getQuestions();
+            
         }
     }
 }

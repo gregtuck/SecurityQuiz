@@ -35,6 +35,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.virusScore = new System.Windows.Forms.TextBox();
             this.reputationScore = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.scorebox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // Question
@@ -115,6 +117,24 @@
             this.reputationScore.TabIndex = 6;
             this.reputationScore.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label3.Location = new System.Drawing.Point(626, 377);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(76, 20);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "SCORE:";
+            // 
+            // scorebox
+            // 
+            this.scorebox.Location = new System.Drawing.Point(709, 376);
+            this.scorebox.Name = "scorebox";
+            this.scorebox.Size = new System.Drawing.Size(32, 20);
+            this.scorebox.TabIndex = 8;
+            // 
             // PLAY
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -122,6 +142,8 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.scorebox);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.reputationScore);
             this.Controls.Add(this.virusScore);
             this.Controls.Add(this.label2);
@@ -147,5 +169,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox virusScore;
         private System.Windows.Forms.TextBox reputationScore;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox scorebox;
     }
 }
