@@ -80,9 +80,7 @@ namespace SecurityQuiz
         {
             int alterVirusNeg = 10;
             int alterReputationNeg = 10;
-
-            
-
+           
             Reputation += alterReputationNeg;
             virus -= alterVirusNeg;
             virusScore.Text = virus.ToString();
@@ -109,14 +107,10 @@ namespace SecurityQuiz
                 Question qston = new Question();
 
                 qston.fetchQuestion();
-
                 Question.Text = qston.getQuestion();
                 button1.Text = qston.getOption1();
                 button2.Text = qston.getOption2();
-                answer = qston.getAnswer();
-                
-
-
+                answer = qston.getAnswer();               
             }
             catch (Exception)
             {
@@ -131,19 +125,15 @@ namespace SecurityQuiz
             reputationScore.Text = Reputation.ToString();                       
         }
         private void PLAY_Load(object sender, EventArgs e)
-        {
-            //RandomNumber randomNumber(int min, int max);
+        {            
             getQuestions();            
         }
-
         private void button1_Click(object sender, EventArgs e)
-        {
-            
+        {            
             decider(button1.Text);
             loseCheck();
             getQuestions();
         }
-
         private void button2_Click(object sender, EventArgs e)
         {
             decider(button2.Text);

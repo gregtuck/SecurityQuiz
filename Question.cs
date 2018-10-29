@@ -43,12 +43,12 @@ namespace SecurityQuiz
 
         public void fetchQuestion()
         {
-
+            DB connect = new DB();
             Random rnd = new Random();
 
-            questionID = rnd.Next(1, 10);
+            questionID = rnd.Next(1, 10);            
 
-            SqlConnection con = new SqlConnection(@"Data Source = vmwsql07.uad.ac.uk; Initial Catalog = sql1601097; User ID = sql1601097; Password = JQD1+v==");
+            SqlConnection con = connect.connection;
 
             con.Open();
 
@@ -60,14 +60,9 @@ namespace SecurityQuiz
                 question = sdl[1].ToString();
                 option1 = sdl[2].ToString();
                 option2 = sdl[3].ToString();
-
                 answer = sdl[6].ToString();
             }
             con.Close();
-        }
-
-        
-
-
+        }       
     }
 }

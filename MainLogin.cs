@@ -22,9 +22,10 @@ namespace SecurityQuiz
             InitializeComponent();                    
         }
         private void LOGIN_Click(object sender, EventArgs e)
-        {                     
-            connect.openConnection();
-            SqlDataAdapter sda = new SqlDataAdapter("SELECT userid, username, passw FROM GAMESEC_APP.USERS WHERE username = '" + USERNAME.Text + "' AND passw = '" + PASSWORD.Text + "'", connect.connectionString);
+        {           
+            SqlConnection con = connect.connection;
+            SqlDataAdapter sda = new SqlDataAdapter("SELECT userid, username, passw FROM GAMESEC_APP.USERS WHERE username = '" + USERNAME.Text + "' AND passw = '" + PASSWORD.Text + "'", con);
+           
             DataTable dt = new DataTable();
             sda.Fill(dt);
 
@@ -39,7 +40,7 @@ namespace SecurityQuiz
             {
                 MessageBox.Show("incorrect username/password");
             }
-            connect.closeConnnection();
+            con.Close();
         }
     }
 }
