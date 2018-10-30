@@ -39,7 +39,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(166, 106);
+            this.label1.Location = new System.Drawing.Point(137, 55);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(91, 20);
             this.label1.TabIndex = 0;
@@ -49,7 +49,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(166, 160);
+            this.label2.Location = new System.Drawing.Point(137, 160);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(86, 20);
             this.label2.TabIndex = 1;
@@ -57,38 +57,43 @@
             // 
             // USERNAME
             // 
-            this.USERNAME.Location = new System.Drawing.Point(157, 129);
+            this.USERNAME.Location = new System.Drawing.Point(128, 93);
             this.USERNAME.Name = "USERNAME";
             this.USERNAME.Size = new System.Drawing.Size(100, 20);
             this.USERNAME.TabIndex = 2;
             // 
             // PASSWORD
             // 
-            this.PASSWORD.Location = new System.Drawing.Point(157, 183);
+            this.PASSWORD.Location = new System.Drawing.Point(128, 192);
             this.PASSWORD.Name = "PASSWORD";
             this.PASSWORD.Size = new System.Drawing.Size(100, 20);
             this.PASSWORD.TabIndex = 3;
             // 
             // LOGIN
             // 
-            this.LOGIN.Location = new System.Drawing.Point(157, 239);
+            this.LOGIN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.LOGIN.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LOGIN.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.LOGIN.Location = new System.Drawing.Point(128, 248);
             this.LOGIN.Name = "LOGIN";
             this.LOGIN.Size = new System.Drawing.Size(100, 51);
             this.LOGIN.TabIndex = 4;
             this.LOGIN.Text = "Login";
-            this.LOGIN.UseVisualStyleBackColor = true;
+            this.LOGIN.UseVisualStyleBackColor = false;
             this.LOGIN.Click += new System.EventHandler(this.LOGIN_Click);
             // 
             // MainLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.ClientSize = new System.Drawing.Size(382, 329);
             this.Controls.Add(this.LOGIN);
             this.Controls.Add(this.PASSWORD);
             this.Controls.Add(this.USERNAME);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.Name = "MainLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainLogin";
