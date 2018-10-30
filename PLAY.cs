@@ -23,14 +23,28 @@ namespace SecurityQuiz
         int gameScore;
         int question;
 
-        Question[] gameQuestions = new Question[10];     
-        public void generateQuestions()
+        string demiseT = " ";
+
+        
+
+        Demise dm = new Demise();
+
+        Question[] gameQuestions = new Question[10];   
+        
+        //This function retrieves all the games question objects, places them in an array and retrieves and sets the players demise message
+        public string generateGame(string dmse)
         {
             for(int i = 0; i < 10; i++)
             {
                 Question getQ = new Question();                
                 gameQuestions[i] = getQ.fetchQuestion(i+1);                
             }
+
+            dm.fetchDemise();
+            dmse = dm.getdemiseText();
+            MessageBox.Show(dmse);
+
+            return dmse;
         }               
         //if the question is odd or even then the respective function is called to change virus/Reputation scores
         public void decider(string response)
@@ -44,14 +58,13 @@ namespace SecurityQuiz
                changeScoreVir();
             }            
         }               
-        public void loseCheck()
+        public void loseCheck(string demise)
         {
             if (virus >= 100)
             {
-                Demise dm = new Demise();
-                dm.fetchDemise();
-                string demiseT = dm.getdemiseText();
-                MessageBox.Show(demiseT.ToString());               
+                
+               
+                MessageBox.Show(demise.ToString());               
             }
             else if (Reputation >=100)
             {
@@ -109,8 +122,8 @@ namespace SecurityQuiz
         public PLAY()
         {          
             InitializeComponent();
-            generateQuestions();
-
+           
+            demiseT = generateGame(demiseT);
             virus = 50;
             Reputation = 50;
             gameScore = 0;
@@ -127,13 +140,13 @@ namespace SecurityQuiz
         private void button1_Click(object sender, EventArgs e)
         {            
             decider(button1.Text);
-            loseCheck();
+            loseCheck(demiseT);
             getQuestions();
         }
         private void button2_Click(object sender, EventArgs e)
         {
             decider(button2.Text);
-            loseCheck();           
+            loseCheck(demiseT);           
             getQuestions();
             
         }
