@@ -30,39 +30,34 @@ namespace SecurityQuiz
         {
             return option2;
         }
-
         public string getQuestion()
         {
             return question;
         }
-
         public string getAnswer()
         {
             return answer;
         }
-
-        public void fetchQuestion()
+        public Question fetchQuestion(int id)
         {
             DB connect = new DB();
             Random rnd = new Random();
 
-            questionID = rnd.Next(1, 10);            
-
+            Question newQ = new Question(); 
+           
             SqlConnection con = connect.connection;
-
-            con.Open();
-
-            SqlCommand cmd = new SqlCommand("SELECT * FROM GAMESEC_APP.QUESTIONS WHERE question_id ='" + questionID + "'", con);
+            con.Open();            
+            SqlCommand cmd = new SqlCommand("SELECT * FROM GAMESEC_APP.QUESTIONS WHERE question_id ='" + id + "'", con);
             SqlDataReader sdl = cmd.ExecuteReader();
             while (sdl.Read())
-            {
-                // change default values to show as text from question datatable
-                question = sdl[1].ToString();
-                option1 = sdl[2].ToString();
-                option2 = sdl[3].ToString();
-                answer = sdl[6].ToString();
+            {              
+                newQ.question = sdl[1].ToString();
+                newQ.option1 = sdl[2].ToString();
+                newQ.option2 = sdl[3].ToString();
+                newQ.answer = sdl[6].ToString();
             }
             con.Close();
+            return newQ;           
         }       
     }
 }

@@ -12,8 +12,7 @@ using System.Data.SqlClient;
 using System.Data.SqlTypes;
 
 namespace SecurityQuiz
-{
-    //test
+{  
     public partial class MainLogin : Form
     {
         DB connect = new DB();
@@ -24,11 +23,9 @@ namespace SecurityQuiz
         private void LOGIN_Click(object sender, EventArgs e)
         {           
             SqlConnection con = connect.connection;
-            SqlDataAdapter sda = new SqlDataAdapter("SELECT userid, username, passw FROM GAMESEC_APP.USERS WHERE username = '" + USERNAME.Text + "' AND passw = '" + PASSWORD.Text + "'", con);
-           
+            SqlDataAdapter sda = new SqlDataAdapter("SELECT userid, username, passw FROM GAMESEC_APP.USERS WHERE username = '" + USERNAME.Text + "' AND passw = '" + PASSWORD.Text + "'", con);           
             DataTable dt = new DataTable();
             sda.Fill(dt);
-
             if (dt.Rows.Count >= 1)
             {
                 this.Hide();

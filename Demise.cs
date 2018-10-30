@@ -26,7 +26,6 @@ namespace SecurityQuiz
             Random rnd = new Random();
             demiseID = rnd.Next(1, 6);           
             SqlConnection con = connect.connection;
-
             con.Open();
             SqlCommand cmd = new SqlCommand("SELECT demiseText FROM GAMESEC_APP.DEMISE WHERE demiseID ='" + demiseID + "'", con);
             SqlDataReader sdl = cmd.ExecuteReader();

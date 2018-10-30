@@ -15,65 +15,52 @@ namespace SecurityQuiz
     public partial class PLAY : Form
     {
        
-        String answer = " ";
-
+        String answer;
         Random rnd = new Random();
-
-        int question;
+       
         int virus;
         int Reputation;
-
         int gameScore;
-        
-        
+        int question;
 
-        
-        
-
+        Question[] gameQuestions = new Question[10];     
+        public void generateQuestions()
+        {
+            for(int i = 0; i < 10; i++)
+            {
+                Question getQ = new Question();                
+                gameQuestions[i] = getQ.fetchQuestion(i+1);                
+            }
+        }               
         //if the question is odd or even then the respective function is called to change virus/Reputation scores
         public void decider(string response)
         {
             if (response == answer)
             {
-                changeScoreRep();
-               
-               
-            }
+                changeScoreRep();               
+             }
             else 
             {
-                changeScoreVir();
-            }
-
-            
-        }       
-
-        // checks if player has gone too high or low
+               changeScoreVir();
+            }            
+        }               
         public void loseCheck()
         {
             if (virus >= 100)
             {
                 Demise dm = new Demise();
-
                 dm.fetchDemise();
-
                 string demiseT = dm.getdemiseText();
-
-                MessageBox.Show(demiseT.ToString());
-
-                //MessageBox.Show("You Lose");
-
+                MessageBox.Show(demiseT.ToString());               
             }
             else if (Reputation >=100)
             {
-                MessageBox.Show("You win");
-                
+                MessageBox.Show("You win");               
             }
-        }
-
-        // selects a random question number before calling the function for the SQL query, also ensures that no questions are repeated after the other
+        }       
         public int RandomQ(int lastQuestion)
         {           
-            question = rnd.Next(1, 10);
+            question = rnd.Next(0, 10);
 
             if (question == lastQuestion)
             {
@@ -82,61 +69,60 @@ namespace SecurityQuiz
             else
             return question;
         }
-
         public void changeScoreRep()
         {
             
 
             gameScore += 25;          
             Reputation += 10;
-            virus -= 10;
+            virus -= 10;           
             virusScore.Text = virus.ToString();
             reputationScore.Text = Reputation.ToString();
-            scorebox.Text = gameScore.ToString();
+            scorebox.Text = gameScore.ToString();           
         }
 
         public void changeScoreVir()
             
-        {
-
-           
+        {          
             Reputation -= 10;
-            virus += 10;
+            virus += 10;            
             virusScore.Text = virus.ToString();
             reputationScore.Text = Reputation.ToString();
-            scorebox.Text = gameScore.ToString();
+            scorebox.Text = gameScore.ToString();          
         }
 
         public void getQuestions()
         {
             try
             {
-               
-                Question qston = new Question();
-
-                qston.fetchQuestion();
-                Question.Text = qston.getQuestion();
-                button1.Text = qston.getOption1();
-                button2.Text = qston.getOption2();
-                answer = qston.getAnswer();               
+                RandomQ(question);
+                Question.Text = gameQuestions[question].getQuestion();
+                button1.Text = gameQuestions[question].getOption1();
+                button2.Text = gameQuestions[question].getOption2();
+                answer = gameQuestions[question].getAnswer();                                          
             }
             catch (Exception)
             {
+                MessageBox.Show("Could not retrieve Question");
             }
         }
         public PLAY()
-        {
+        {          
             InitializeComponent();
+            generateQuestions();
+
             virus = 50;
             Reputation = 50;
             gameScore = 0;
+            question = RandomQ(0);
             virusScore.Text = virus.ToString();
             reputationScore.Text = Reputation.ToString();
             scorebox.Text = gameScore.ToString();
+
         }
         private void PLAY_Load(object sender, EventArgs e)
-        {            
-            getQuestions();            
+        {           
+            getQuestions();
         }
         private void button1_Click(object sender, EventArgs e)
         {            
@@ -147,7 +133,7 @@ namespace SecurityQuiz
         private void button2_Click(object sender, EventArgs e)
         {
             decider(button2.Text);
-            loseCheck();
+            loseCheck();           
             getQuestions();
             
         }
