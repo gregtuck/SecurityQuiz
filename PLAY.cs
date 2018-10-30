@@ -23,7 +23,7 @@ namespace SecurityQuiz
         int gameScore;
         int question;
 
-        string demiseT = " ";
+        string demiseT;
 
         
 
@@ -42,7 +42,7 @@ namespace SecurityQuiz
 
             dm.fetchDemise();
             dmse = dm.getdemiseText();
-            MessageBox.Show(dmse);
+           
 
             return dmse;
         }               
@@ -58,19 +58,28 @@ namespace SecurityQuiz
                changeScoreVir();
             }            
         }               
+
+        // checks if the player has either lost or won
         public void loseCheck(string demise)
         {
             if (virus >= 100)
             {
+
                 
-               
-                MessageBox.Show(demise.ToString());               
+                MessageBox.Show(demise.ToString());
+                this.Hide();
+                MainMenu mm = new MainMenu();
+                mm.Show();
+                mm.Closed += (s, args) => Close();
+
             }
             else if (Reputation >=100)
             {
                 MessageBox.Show("You win");               
             }
-        }       
+        }
+
+        //ensures that questions are not repeated consecutively 
         public int RandomQ(int lastQuestion)
         {           
             question = rnd.Next(0, 10);
@@ -82,10 +91,10 @@ namespace SecurityQuiz
             else
             return question;
         }
-        public void changeScoreRep()
-        {
-            
 
+        // change players reputation score and lowers virus score
+        public void changeScoreRep()
+        {           
             gameScore += 25;          
             Reputation += 10;
             virus -= 10;           
@@ -94,6 +103,7 @@ namespace SecurityQuiz
             scorebox.Text = gameScore.ToString();           
         }
 
+        // change players virus score and lowers reputation score
         public void changeScoreVir()
             
         {          
@@ -104,6 +114,7 @@ namespace SecurityQuiz
             scorebox.Text = gameScore.ToString();          
         }
 
+        // get game questions from the array of questions objects
         public void getQuestions()
         {
             try
@@ -119,10 +130,11 @@ namespace SecurityQuiz
                 MessageBox.Show("Could not retrieve Question");
             }
         }
+
+        //game setup
         public PLAY()
         {          
             InitializeComponent();
-           
             demiseT = generateGame(demiseT);
             virus = 50;
             Reputation = 50;
@@ -133,6 +145,8 @@ namespace SecurityQuiz
             scorebox.Text = gameScore.ToString();
 
         }
+
+        //after player has answered question The PLAY form will reload retrieving questions
         private void PLAY_Load(object sender, EventArgs e)
         {           
             getQuestions();

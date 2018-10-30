@@ -21,6 +21,8 @@ namespace SecurityQuiz
         {
             return demiseText;
         }
+
+        // get the players demise message from the game database
         public void fetchDemise()
         {           
             Random rnd = new Random();

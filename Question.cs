@@ -38,6 +38,7 @@ namespace SecurityQuiz
         {
             return answer;
         }
+        // get questions from the game database
         public Question fetchQuestion(int id)
         {
             DB connect = new DB();
