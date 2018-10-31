@@ -22,7 +22,6 @@ namespace SecurityQuiz
             PLAY game = new PLAY();
             game.Show();
             game.Closed += (s, args) => Close();
-
         }
     }
 }

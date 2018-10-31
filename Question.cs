@@ -10,22 +10,16 @@ namespace SecurityQuiz
 {
     class Question
     {
-        protected int questionID;
+        
         protected string option1;
         protected string option2;
         protected string question;
         protected string answer;
 
-        public int getQuestionID()
-        {
-            return questionID;
-        }
-
         public string getOption1()
         {
             return option1;
         }
-
         public string getOption2()
         {
             return option2;
@@ -39,17 +33,18 @@ namespace SecurityQuiz
             return answer;
         }
         // get questions from the game database
-        public Question fetchQuestion(int id)
+        public Question fetchQuestion(int questionID)
         {
             DB connect = new DB();
             Random rnd = new Random();
-
-            Question newQ = new Question(); 
-           
+            Question newQ = new Question();           
             SqlConnection con = connect.connection;
-            con.Open();            
-            SqlCommand cmd = new SqlCommand("SELECT * FROM GAMESEC_APP.QUESTIONS WHERE question_id ='" + id + "'", con);
+
+            con.Open();   
+            
+            SqlCommand cmd = new SqlCommand("SELECT * FROM GAMESEC_APP.QUESTIONS WHERE question_id ='" + questionID + "'", con);
             SqlDataReader sdl = cmd.ExecuteReader();
+
             while (sdl.Read())
             {              
                 newQ.question = sdl[1].ToString();

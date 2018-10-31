@@ -38,5 +38,12 @@ namespace SecurityQuiz
             }
             con.Close();
         }
+        public string getDemiseMessage(string dmse)
+        {
+            fetchDemise();
+            dmse = getdemiseText();
+
+            return dmse;
+        }
     }
 }

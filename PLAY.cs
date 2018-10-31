@@ -11,41 +11,40 @@ using System.Data.SqlClient;
 using System.Data.SqlTypes;
 
 namespace SecurityQuiz
-{  
+{
     public partial class PLAY : Form
     {
-       
         String answer;
         Random rnd = new Random();
-       
+
         int virus;
         int Reputation;
         int gameScore;
         int question;
 
+        //string variables used to display win or lose text
         string demiseT;
-
-        
+        string victoryText;
 
         Demise dm = new Demise();
-
-        Question[] gameQuestions = new Question[10];   
+        Victory vic = new Victory();
+        Question[] gameQuestions = new Question[10];
         
-        //This function retrieves all the games question objects, places them in an array and retrieves and sets the players demise message
-        public string generateGame(string dmse)
+        // this is used to place question objects into an array
+        public void generateGame()
         {
-            for(int i = 0; i < 10; i++)
+            try {
+                for (int i = 0; i < 10; i++)
+                {
+                    Question getQ = new Question();
+                    gameQuestions[i] = getQ.fetchQuestion(i + 1);
+                }                              
+            }catch(Exception)
             {
-                Question getQ = new Question();                
-                gameQuestions[i] = getQ.fetchQuestion(i+1);                
-            }
-
-            dm.fetchDemise();
-            dmse = dm.getdemiseText();
-           
-
-            return dmse;
-        }               
+                MessageBox.Show("could not generate questions and demise/victory messages");
+            }            
+        }
+        
         //if the question is odd or even then the respective function is called to change virus/Reputation scores
         public void decider(string response)
         {
@@ -64,18 +63,16 @@ namespace SecurityQuiz
         {
             if (virus >= 100)
             {
-
-                
+         
                 MessageBox.Show(demise.ToString());
                 this.Hide();
                 MainMenu mm = new MainMenu();
                 mm.Show();
                 mm.Closed += (s, args) => Close();
-
             }
             else if (Reputation >=100)
             {
-                MessageBox.Show("You win");               
+                MessageBox.Show(victoryText.ToString());               
             }
         }
 
@@ -135,7 +132,9 @@ namespace SecurityQuiz
         public PLAY()
         {          
             InitializeComponent();
-            demiseT = generateGame(demiseT);
+            generateGame();
+            demiseT = dm.getDemiseMessage(demiseT);
+            victoryText = vic.getVictoryMessage(victoryText);
             virus = 50;
             Reputation = 50;
             gameScore = 0;
@@ -143,7 +142,6 @@ namespace SecurityQuiz
             virusScore.Text = virus.ToString();
             reputationScore.Text = Reputation.ToString();
             scorebox.Text = gameScore.ToString();
-
         }
 
         //after player has answered question The PLAY form will reload retrieving questions
