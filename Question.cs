@@ -9,13 +9,11 @@ using System.Data.SqlTypes;
 namespace SecurityQuiz
 {
     class Question
-    {
-        
+    {     
         protected string option1;
         protected string option2;
         protected string question;
         protected string answer;
-
         public string getOption1()
         {
             return option1;

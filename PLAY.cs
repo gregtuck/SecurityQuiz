@@ -62,8 +62,7 @@ namespace SecurityQuiz
         public void loseCheck(string demise)
         {
             if (virus >= 100)
-            {
-         
+            {       
                 MessageBox.Show(demise.ToString());
                 this.Hide();
                 MainMenu mm = new MainMenu();
@@ -101,8 +100,7 @@ namespace SecurityQuiz
         }
 
         // change players virus score and lowers reputation score
-        public void changeScoreVir()
-            
+        public void changeScoreVir()         
         {          
             Reputation -= 10;
             virus += 10;            
@@ -159,8 +157,7 @@ namespace SecurityQuiz
         {
             decider(button2.Text);
             loseCheck(demiseT);           
-            getQuestions();
-            
+            getQuestions();           
         }
     }
 }
