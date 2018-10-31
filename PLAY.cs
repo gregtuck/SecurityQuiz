@@ -119,7 +119,7 @@ namespace SecurityQuiz
             try
             {
                 RandomQ(question);
-                Question.Text = gameQuestions[question].getQuestion();
+                QuestionText.Text = gameQuestions[question].getQuestion();
                 button1.Text = gameQuestions[question].getOption1();
                 button2.Text = gameQuestions[question].getOption2();
                 answer = gameQuestions[question].getAnswer();                                          
