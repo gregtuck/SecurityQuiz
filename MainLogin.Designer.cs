@@ -39,7 +39,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(137, 55);
+            this.label1.Location = new System.Drawing.Point(31, 56);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(91, 20);
             this.label1.TabIndex = 0;
@@ -49,7 +49,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(137, 160);
+            this.label2.Location = new System.Drawing.Point(36, 108);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(86, 20);
             this.label2.TabIndex = 1;
@@ -57,14 +57,14 @@
             // 
             // USERNAME
             // 
-            this.USERNAME.Location = new System.Drawing.Point(128, 93);
+            this.USERNAME.Location = new System.Drawing.Point(128, 58);
             this.USERNAME.Name = "USERNAME";
             this.USERNAME.Size = new System.Drawing.Size(100, 20);
             this.USERNAME.TabIndex = 2;
             // 
             // PASSWORD
             // 
-            this.PASSWORD.Location = new System.Drawing.Point(128, 192);
+            this.PASSWORD.Location = new System.Drawing.Point(128, 108);
             this.PASSWORD.Name = "PASSWORD";
             this.PASSWORD.Size = new System.Drawing.Size(100, 20);
             this.PASSWORD.TabIndex = 3;
@@ -74,7 +74,7 @@
             this.LOGIN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.LOGIN.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LOGIN.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.LOGIN.Location = new System.Drawing.Point(128, 248);
+            this.LOGIN.Location = new System.Drawing.Point(128, 175);
             this.LOGIN.Name = "LOGIN";
             this.LOGIN.Size = new System.Drawing.Size(100, 51);
             this.LOGIN.TabIndex = 4;
@@ -87,7 +87,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(382, 329);
+            this.ClientSize = new System.Drawing.Size(289, 248);
             this.Controls.Add(this.LOGIN);
             this.Controls.Add(this.PASSWORD);
             this.Controls.Add(this.USERNAME);

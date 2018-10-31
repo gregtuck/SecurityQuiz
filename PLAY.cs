@@ -71,7 +71,11 @@ namespace SecurityQuiz
             }
             else if (Reputation >=100)
             {
-                MessageBox.Show(victoryText.ToString());               
+                MessageBox.Show(victoryText.ToString());
+                this.Hide();
+                MainMenu mm = new MainMenu();
+                mm.Show();
+                mm.Closed += (s, args) => Close();
             }
         }
 
