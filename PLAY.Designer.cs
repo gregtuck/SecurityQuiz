@@ -130,12 +130,11 @@
             this.QuestionText.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.QuestionText.AutoSize = true;
             this.QuestionText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.QuestionText.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.QuestionText.Location = new System.Drawing.Point(130, 66);
+            this.QuestionText.Location = new System.Drawing.Point(105, 66);
             this.QuestionText.Name = "QuestionText";
-            this.QuestionText.Size = new System.Drawing.Size(52, 18);
+            this.QuestionText.Size = new System.Drawing.Size(552, 73);
             this.QuestionText.TabIndex = 9;
             this.QuestionText.Text = "label4";
             // 

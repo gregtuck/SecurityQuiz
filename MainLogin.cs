@@ -15,12 +15,14 @@ namespace SecurityQuiz
     public partial class MainLogin : Form
     {
         DB connect = new DB();
+        //Hscore hs = new Hscore();
         public MainLogin()
         {
             InitializeComponent();                    
         }
         private void LOGIN_Click(object sender, EventArgs e)
-        {           
+        {
+            
             SqlConnection con = connect.connection;
             SqlDataAdapter sda = new SqlDataAdapter("SELECT userid, username, passw FROM GAMESEC_APP.USERS WHERE username = '" + USERNAME.Text + "' AND passw = '" + PASSWORD.Text + "'", con);           
             DataTable dt = new DataTable();
@@ -37,6 +39,8 @@ namespace SecurityQuiz
                 MessageBox.Show("incorrect username/password");
             }
             con.Close();
+
+            
         }
     }
 }

@@ -12,9 +12,11 @@ namespace SecurityQuiz
 {
     public partial class MainMenu : Form
     {
+        Hscore hs = new Hscore();
         public MainMenu()
         {
             InitializeComponent();
+           
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -22,6 +24,12 @@ namespace SecurityQuiz
             PLAY game = new PLAY();
             game.Show();
             game.Closed += (s, args) => Close();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            highScoreView hsv = new highScoreView();
+            hsv.Show();
         }
     }
 }

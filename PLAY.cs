@@ -17,6 +17,10 @@ namespace SecurityQuiz
         String answer;
         Random rnd = new Random();
 
+        Hscore hs = new Hscore();
+
+        DB connect = new DB();
+
         int virus;
         int Reputation;
         int gameScore;
@@ -29,7 +33,9 @@ namespace SecurityQuiz
         Demise dm = new Demise();
         Victory vic = new Victory();
         Question[] gameQuestions = new Question[10];
-        
+
+        int minHighScore;
+
         // this is used to place question objects into an array
         public void generateGame()
         {
@@ -64,18 +70,16 @@ namespace SecurityQuiz
             if (virus >= 100)
             {       
                 MessageBox.Show(demise.ToString());
-                this.Hide();
-                MainMenu mm = new MainMenu();
-                mm.Show();
-                mm.Closed += (s, args) => Close();
+                
+                isLeader(gameScore);
+                
             }
             else if (Reputation >=100)
             {
                 MessageBox.Show(victoryText.ToString());
-                this.Hide();
-                MainMenu mm = new MainMenu();
-                mm.Show();
-                mm.Closed += (s, args) => Close();
+               
+                isLeader(gameScore);
+                
             }
         }
 
@@ -95,7 +99,7 @@ namespace SecurityQuiz
         // change players reputation score and lowers virus score
         public void changeScoreRep()
         {           
-            gameScore += 25;          
+                      
             Reputation += 10;
             virus -= 10;           
             virusScore.Text = virus.ToString();
@@ -105,7 +109,8 @@ namespace SecurityQuiz
 
         // change players virus score and lowers reputation score
         public void changeScoreVir()         
-        {          
+        {
+            gameScore -= 50;
             Reputation -= 10;
             virus += 10;            
             virusScore.Text = virus.ToString();
@@ -135,11 +140,12 @@ namespace SecurityQuiz
         {          
             InitializeComponent();
             generateGame();
+            minHighScore = minHS();
             demiseT = dm.getDemiseMessage(demiseT);
             victoryText = vic.getVictoryMessage(victoryText);
             virus = 50;
             Reputation = 50;
-            gameScore = 0;
+            gameScore = 1000;
             question = RandomQ(0);
             virusScore.Text = virus.ToString();
             reputationScore.Text = Reputation.ToString();
@@ -163,5 +169,36 @@ namespace SecurityQuiz
             loseCheck(demiseT);           
             getQuestions();           
         }
+
+        public int minHS()
+        {
+            hs.getHighScores();
+
+            int MHS = hs.highscoreArr[4].getrankedScore();
+
+            Console.WriteLine(MHS);
+
+            return MHS;
+        }
+
+        public void isLeader(int score)
+        {
+            if (score > minHighScore)
+            {
+                this.Hide();
+                HighScore HS = new HighScore(gameScore);
+                HS.Show();
+                HS.Closed += (s, args) => Close();
+            }
+            else
+            {
+                this.Hide();
+                MainMenu mm = new MainMenu();
+                mm.Show();
+                mm.Closed += (s, args) => Close();
+            }
+            
+        }
     }
+
 }
