@@ -48,7 +48,7 @@ namespace SecurityQuiz
             }
         }
 
-        public void getHighScores()
+        public void fetchHighScores()
         {
             SqlConnection con = connect.connection;
 

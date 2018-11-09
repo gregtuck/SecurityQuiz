@@ -31,5 +31,11 @@ namespace SecurityQuiz
             highScoreView hsv = new highScoreView();
             hsv.Show();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            AdminPanel ap = new AdminPanel();
+            ap.Show();
+        }
     }
 }

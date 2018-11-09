@@ -66,12 +66,14 @@
             // 
             this.PASSWORD.Location = new System.Drawing.Point(128, 108);
             this.PASSWORD.Name = "PASSWORD";
+            this.PASSWORD.PasswordChar = '*';
             this.PASSWORD.Size = new System.Drawing.Size(100, 20);
             this.PASSWORD.TabIndex = 3;
+            this.PASSWORD.UseSystemPasswordChar = true;
             // 
             // LOGIN
             // 
-            this.LOGIN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.LOGIN.BackColor = System.Drawing.Color.Crimson;
             this.LOGIN.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LOGIN.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.LOGIN.Location = new System.Drawing.Point(128, 175);

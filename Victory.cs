@@ -25,7 +25,7 @@ namespace SecurityQuiz
             return victoryMessage;
         }
 
-        public void fetchVictoryMessage()
+        public string fetchVictoryMessage(string victory)
         {
             Random rnd = new Random();
             victoryID = rnd.Next(1, 6);
@@ -39,13 +39,17 @@ namespace SecurityQuiz
                 victoryMessage = sdl[0].ToString();
             }
             con.Close();
+
+            victory = getvictoryMessage();
+
+            return victory;
         }
-        public string getVictoryMessage(string victory)
+       /* public string getVictoryMessage(string victory)
         {
             fetchVictoryMessage();
             victory = getvictoryMessage();
 
             return victory;
-        }
+        }*/
     }
 }

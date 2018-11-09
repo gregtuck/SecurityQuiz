@@ -141,8 +141,8 @@ namespace SecurityQuiz
             InitializeComponent();
             generateGame();
             minHighScore = minHS();
-            demiseT = dm.getDemiseMessage(demiseT);
-            victoryText = vic.getVictoryMessage(victoryText);
+            demiseT = dm.fetchDemise(demiseT);
+            victoryText = vic.fetchVictoryMessage(victoryText);
             virus = 50;
             Reputation = 50;
             gameScore = 1000;
@@ -172,7 +172,7 @@ namespace SecurityQuiz
 
         public int minHS()
         {
-            hs.getHighScores();
+            hs.fetchHighScores();
 
             int MHS = hs.highscoreArr[4].getrankedScore();
 

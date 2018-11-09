@@ -144,6 +144,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.ClientSize = new System.Drawing.Size(178, 223);
             this.Controls.Add(this.fifthScore);
             this.Controls.Add(this.fifthN);
@@ -155,7 +156,10 @@
             this.Controls.Add(this.secondN);
             this.Controls.Add(this.firstScore);
             this.Controls.Add(this.firstN);
+            this.Cursor = System.Windows.Forms.Cursors.Default;
+            this.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.Name = "highScoreView";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "highScoreView";
             this.ResumeLayout(false);
             this.PerformLayout();

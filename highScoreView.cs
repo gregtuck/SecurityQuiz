@@ -18,7 +18,7 @@ namespace SecurityQuiz
         public highScoreView()
         {
             InitializeComponent();
-            hs.getHighScores();
+            hs.fetchHighScores();
             displayScores();
         }
 

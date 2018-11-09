@@ -23,7 +23,7 @@ namespace SecurityQuiz
         }
 
         // get the players demise message from the game database
-        public void fetchDemise()
+        public string fetchDemise(string dmse)
         {           
             Random rnd = new Random();
             demiseID = rnd.Next(1, 6);           
@@ -37,13 +37,17 @@ namespace SecurityQuiz
                 demiseText = sdl[0].ToString();
             }
             con.Close();
+
+            dmse = getdemiseText();
+
+            return dmse;
         }
-        public string getDemiseMessage(string dmse)
+        /*public string fetchDemiseMessage(string dmse)
         {
             fetchDemise();
             dmse = getdemiseText();
 
             return dmse;
-        }
+        }*/
     }
 }

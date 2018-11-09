@@ -57,12 +57,16 @@
             // 
             // addHScore
             // 
+            this.addHScore.BackColor = System.Drawing.Color.Crimson;
+            this.addHScore.Cursor = System.Windows.Forms.Cursors.Default;
+            this.addHScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addHScore.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.addHScore.Location = new System.Drawing.Point(94, 160);
             this.addHScore.Name = "addHScore";
             this.addHScore.Size = new System.Drawing.Size(113, 54);
             this.addHScore.TabIndex = 2;
             this.addHScore.Text = "SUBMIT";
-            this.addHScore.UseVisualStyleBackColor = true;
+            this.addHScore.UseVisualStyleBackColor = false;
             this.addHScore.Click += new System.EventHandler(this.addHScore_Click);
             // 
             // PHScore
@@ -88,6 +92,7 @@
             this.Controls.Add(this.HScoreN);
             this.Controls.Add(this.label1);
             this.Name = "HighScore";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "HighScore";
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -48,7 +48,7 @@ namespace SecurityQuiz
                 newQ.question = sdl[1].ToString();
                 newQ.option1 = sdl[2].ToString();
                 newQ.option2 = sdl[3].ToString();
-                newQ.answer = sdl[6].ToString();
+                newQ.answer = sdl[4].ToString();
             }
             con.Close();
             return newQ;           
