@@ -52,6 +52,34 @@ namespace SecurityQuiz
             }
             con.Close();
             return newQ;           
-        }       
+        }
+        
+        public Question[] FetchAll()
+        {
+            List<Question> lQuestions = new List<Question>();            
+            DB connect = new DB();
+            SqlConnection con = connect.connection;
+
+            con.Open();
+
+            SqlCommand cmd = new SqlCommand("Select * FROM GAMESEC_APP.QUESTIONS ORDER BY newid()", con);
+            SqlDataReader sdl = cmd.ExecuteReader();
+
+            while (sdl.Read())
+            {
+                Question Lq = new Question();
+                Lq.question = sdl[1].ToString();
+                Lq.option1 = sdl[2].ToString();
+                Lq.option2 = sdl[3].ToString();
+                Lq.answer = sdl[4].ToString();
+                lQuestions.Add(Lq);
+            }
+
+            Question[] gotten = new Question[lQuestions.Count()];           
+            gotten = lQuestions.ToArray();
+            con.Close();
+
+            return gotten;           
+        }
     }
 }

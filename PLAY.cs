@@ -32,25 +32,21 @@ namespace SecurityQuiz
 
         Demise dm = new Demise();
         Victory vic = new Victory();
-        Question[] gameQuestions = new Question[10];
+        
+        Question nom = new Question();
 
-        int minHighScore;
+        //List<Question> allQ = new List<Question>();
 
-        // this is used to place question objects into an array
-        public void generateGame()
+        Question[] gameQuestions;
+
+
+        public void generateList()
         {
-            try {
-                for (int i = 0; i < 10; i++)
-                {
-                    Question getQ = new Question();
-                    gameQuestions[i] = getQ.fetchQuestion(i + 1);
-                }                              
-            }catch(Exception)
-            {
-                MessageBox.Show("could not generate questions and demise/victory messages");
-            }            
+          gameQuestions = nom.FetchAll();
         }
         
+        int minHighScore;
+ 
         //if the question is odd or even then the respective function is called to change virus/Reputation scores
         public void decider(string response)
         {
@@ -98,8 +94,7 @@ namespace SecurityQuiz
 
         // change players reputation score and lowers virus score
         public void changeScoreRep()
-        {           
-                      
+        {                                
             Reputation += 10;
             virus -= 10;           
             virusScore.Text = virus.ToString();
@@ -139,7 +134,7 @@ namespace SecurityQuiz
         public PLAY()
         {          
             InitializeComponent();
-            generateGame();
+            generateList();
             minHighScore = minHS();
             demiseT = dm.fetchDemise(demiseT);
             victoryText = vic.fetchVictoryMessage(victoryText);
@@ -173,11 +168,8 @@ namespace SecurityQuiz
         public int minHS()
         {
             hs.fetchHighScores();
-
             int MHS = hs.highscoreArr[4].getrankedScore();
-
             Console.WriteLine(MHS);
-
             return MHS;
         }
 

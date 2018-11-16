@@ -14,16 +14,15 @@ namespace SecurityQuiz
 {
     class Admin
     {
-
         DB connect = new DB();
-
-
         public void addQuestion(string question, string option1, string option2, string answer)
         {
             try
             {
                 SqlConnection con = connect.connection;
+
                 con.Open();
+
                 SqlCommand cmd = new SqlCommand("INSERT INTO GAMESEC_APP.QUESTIONS (question_text, option_1, option_2, answer) values (@value1, @value2, @value3, @value4)", con);
 
                 cmd.Parameters.AddWithValue("@value1", question);
@@ -32,6 +31,7 @@ namespace SecurityQuiz
                 cmd.Parameters.AddWithValue("@value4", answer);
                 cmd.ExecuteNonQuery();
                 con.Close();
+
             }catch(Exception)
             {
                 MessageBox.Show("Could not add new question to database");
@@ -50,7 +50,6 @@ namespace SecurityQuiz
                 cmd.ExecuteNonQuery();
                 con.Close();
 
-
             }catch(Exception)
             {
                 MessageBox.Show("Could not remove question");
@@ -58,9 +57,7 @@ namespace SecurityQuiz
         }
 
         public void editQuestion (string q, string one, string two, string a, int qid)
-        {
-            
-
+        {          
             try
             {
                 SqlConnection con = connect.connection;
@@ -80,13 +77,7 @@ namespace SecurityQuiz
             {
                 MessageBox.Show("Could not update");
             }
-        
-
             
         }
-       
-
-
-
     }
 }
