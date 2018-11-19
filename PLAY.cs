@@ -188,6 +188,7 @@ namespace SecurityQuiz
                 MainMenu mm = new MainMenu();
                 mm.Show();
                 mm.Closed += (s, args) => Close();
+                
             }
             
         }

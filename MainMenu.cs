@@ -18,6 +18,7 @@ namespace SecurityQuiz
             InitializeComponent();
            
         }
+        //main game button, this will begin the quiz
         private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -26,16 +27,11 @@ namespace SecurityQuiz
             game.Closed += (s, args) => Close();
         }
 
+        // this will display all the applications high scores
         private void button2_Click(object sender, EventArgs e)
         {
             highScoreView hsv = new highScoreView();
             hsv.Show();
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            AdminPanel ap = new AdminPanel();
-            ap.Show();
-        }
+        }       
     }
 }

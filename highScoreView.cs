@@ -22,6 +22,7 @@ namespace SecurityQuiz
             displayScores();
         }
 
+        //This displays all the highscores on the Highscores Board
         public void displayScores()
         {
             try

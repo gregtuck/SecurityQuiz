@@ -94,5 +94,14 @@ namespace SecurityQuiz
             showQuestions();
             Utilities.ResetAllControls(this);
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            MainLogin ml = new MainLogin();
+            ml.Show();
+            ml.Closed += (s, args) => Close();
+
+        }
     }
 }

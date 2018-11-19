@@ -24,21 +24,18 @@ namespace SecurityQuiz
             InitializeComponent();
             PHScore.Text = playerScore.ToString();
             PlayerScoretosubmit = playerScore;
-            
-
-            
-
         }
 
         private void addHScore_Click(object sender, EventArgs e)
         {
             PlayerName = HScoreN.Text;
             HS.addHStoDB(PlayerName, PlayerScoretosubmit);
-
             this.Hide();
             MainMenu mm = new MainMenu();
             mm.Show();
             mm.Closed += (s, args) => Close();
+            
+
         }
     }
 }
