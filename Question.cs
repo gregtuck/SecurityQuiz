@@ -56,7 +56,7 @@ namespace SecurityQuiz
         
         public Question[] FetchAll()
         {
-            List<Question> lQuestions = new List<Question>();            
+            List<Question> listQuestions = new List<Question>();            
             DB connect = new DB();
             SqlConnection con = connect.connection;
 
@@ -72,14 +72,14 @@ namespace SecurityQuiz
                 Lq.option1 = sdl[2].ToString();
                 Lq.option2 = sdl[3].ToString();
                 Lq.answer = sdl[4].ToString();
-                lQuestions.Add(Lq);
+                listQuestions.Add(Lq);
             }
 
-            Question[] gotten = new Question[lQuestions.Count()];           
-            gotten = lQuestions.ToArray();
+            Question[] fetchedQuestions = new Question[listQuestions.Count()];
+            fetchedQuestions = listQuestions.ToArray();
             con.Close();
 
-            return gotten;           
+            return fetchedQuestions;           
         }
     }
 }

@@ -12,7 +12,7 @@ using System.Data.SqlTypes;
 
 namespace SecurityQuiz
 {
-    class Admin
+    class Admin:User
     {
         DB connect = new DB();
         public void addQuestion(string question, string option1, string option2, string answer)
@@ -35,6 +35,29 @@ namespace SecurityQuiz
             }catch(Exception)
             {
                 MessageBox.Show("Could not add new question to database");
+            }
+        }
+
+        public void addUser(string username, string password)
+        {
+            try
+            {
+                var hash = SecurePasswordHasher.Hash(password);
+
+                SqlConnection con = connect.connection;
+
+                con.Open();
+
+                SqlCommand cmd = new SqlCommand("INSERT INTO GAMESEC_APP.USERS (username, passw, userType) values (@value1, @value2, @value3)", con);
+
+                cmd.Parameters.AddWithValue("@value1", username);
+                cmd.Parameters.AddWithValue("@value2", hash);
+                cmd.Parameters.AddWithValue("@value3", 0);
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }catch(Exception)
+            {
+                MessageBox.Show("Could not add new User");
             }
         }
 

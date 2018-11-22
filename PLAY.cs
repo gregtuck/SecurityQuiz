@@ -30,10 +30,10 @@ namespace SecurityQuiz
         string demiseT;
         string victoryText;
 
-        Demise dm = new Demise();
-        Victory vic = new Victory();
+        Demise demiseMessage = new Demise();
+        Victory victoryMessage = new Victory();
         
-        Question nom = new Question();
+        Question setup = new Question();
 
         //List<Question> allQ = new List<Question>();
 
@@ -42,7 +42,7 @@ namespace SecurityQuiz
 
         public void generateList()
         {
-          gameQuestions = nom.FetchAll();
+          gameQuestions = setup.FetchAll();
         }
         
         int minHighScore;
@@ -136,8 +136,8 @@ namespace SecurityQuiz
             InitializeComponent();
             generateList();
             minHighScore = minHS();
-            demiseT = dm.fetchDemise(demiseT);
-            victoryText = vic.fetchVictoryMessage(victoryText);
+            demiseT = demiseMessage.fetchDemise(demiseT);
+            victoryText = victoryMessage.fetchVictoryMessage(victoryText);
             virus = 50;
             Reputation = 50;
             gameScore = 1000;
