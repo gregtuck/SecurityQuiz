@@ -37,7 +37,7 @@ namespace SecurityQuiz
 
                     var userType = dt.Rows[0][1].ToString();
 
-
+                    //SecurePasswordHasher.Verify returns a boolean, if true this function will continue with the login process
                     if (SecurePasswordHasher.Verify(PASSWORD.Text, hashed))
                     {
                         if (userType == "1")

@@ -42,12 +42,5 @@ namespace SecurityQuiz
 
             return dmse;
         }
-        /*public string fetchDemiseMessage(string dmse)
-        {
-            fetchDemise();
-            dmse = getdemiseText();
-
-            return dmse;
-        }*/
     }
 }

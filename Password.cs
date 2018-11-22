@@ -1,5 +1,5 @@
 ﻿/***************************************************************************************
-*    Title: <Secure password hashing and verification
+*    Title: <Secure password hashing and verification>
 *    Author: <Christian Gollhardt>
 *    Date: <25/10/2018>
 *    

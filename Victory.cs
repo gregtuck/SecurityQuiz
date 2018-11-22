@@ -27,6 +27,7 @@ namespace SecurityQuiz
 
         public string fetchVictoryMessage(string victory)
         {
+
             Random rnd = new Random();
             victoryID = rnd.Next(1, 6);
             SqlConnection con = connect.connection;
@@ -44,12 +45,5 @@ namespace SecurityQuiz
 
             return victory;
         }
-       /* public string getVictoryMessage(string victory)
-        {
-            fetchVictoryMessage();
-            victory = getvictoryMessage();
-
-            return victory;
-        }*/
     }
 }

@@ -33,13 +33,14 @@ namespace SecurityQuiz
         }
         private void showQuestions()
         {
-            DB connect = new DB();
-            SqlConnection con = connect.connection;
-            con.Open();
-            SqlCommand cmd = new SqlCommand("SELECT * FROM GAMESEC_APP.QUESTIONS", con);
-
             try
             {
+                DB connect = new DB();
+                SqlConnection con = connect.connection;
+                con.Open();
+                SqlCommand cmd = new SqlCommand("SELECT * FROM GAMESEC_APP.QUESTIONS", con);
+
+            
                 SqlDataAdapter sda = new SqlDataAdapter();
                 sda.SelectCommand = cmd;
                 DataTable dt = new DataTable();
@@ -103,5 +104,7 @@ namespace SecurityQuiz
             ml.Closed += (s, args) => Close();
 
         }
+
+       
     }
 }
