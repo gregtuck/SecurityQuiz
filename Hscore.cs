@@ -29,6 +29,7 @@ namespace SecurityQuiz
             return rankedScore;
         }
 
+        //add new highscore to highscores datatable
         public void addHStoDB(string playerName, int playerScore)
         {
             try
@@ -48,6 +49,7 @@ namespace SecurityQuiz
             }
         }
 
+        //get the top 5 high scores from database
         public void fetchHighScores()
         {
             SqlConnection con = connect.connection;

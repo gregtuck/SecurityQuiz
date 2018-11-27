@@ -31,6 +31,7 @@ namespace SecurityQuiz
             InitializeComponent();
             showQuestions();
         }
+        //show all Questions and scenarios to datatable shown on admin panel
         private void showQuestions()
         {
             try
@@ -57,45 +58,81 @@ namespace SecurityQuiz
         }
         private void AddNewQuestion_Click(object sender, EventArgs e)
         {
-            addquestion = addQuestionT.Text;
-            addoption1 = AddOption1.Text;
-            addoption2 = AddOption2.Text;
-            addanswer = addAnswer.Text;        
-            admin.addQuestion(addquestion, addoption1, addoption2, addanswer);        
-            showQuestions();
-            Utilities.ResetAllControls(this);
+            try {
+                addquestion = addQuestionT.Text;
+                addoption1 = AddOption1.Text;
+                addoption2 = AddOption2.Text;
+                addanswer = addAnswer.Text;
+                admin.addQuestion(addquestion, addoption1, addoption2, addanswer);
+                showQuestions();
+                Utilities.ClearPanels(groupBox1);
+            } catch (Exception)
+            {
+                MessageBox.Show("Please Ensure all Fields are valid");
+            }
+            
+           
         }
 
+        //delete question from database
         private void button2_Click(object sender, EventArgs e)
         {
-            QuestionID = int.Parse(QID.Text);
-            admin.deleteQuestion(QuestionID);
-            showQuestions();
-            Utilities.ResetAllControls(this);
+            try {
+                if (QID.Text == "")
+                {
+                    MessageBox.Show("no ID entered");
+                }
+                else
+                {
+                    QuestionID = int.Parse(QID.Text);
+                    admin.deleteQuestion(QuestionID);
+                    showQuestions();
+                    Utilities.ClearPanels(groupBox2);
+                }
+            }catch(Exception)
+            {
+                MessageBox.Show("Please Ensure input is valid ID");
+            }
+            
         }
 
+        //edit question on database
         private void button3_Click(object sender, EventArgs e)
-        {        
-            QuestionID = int.Parse(QID.Text);
-            editQuestion = editQuestion.fetchQuestion(QuestionID);
-            addQuestionT.Text = editQuestion.getQuestion();
-            AddOption1.Text = editQuestion.getOption1();
-            AddOption2.Text = editQuestion.getOption2();
-            addAnswer.Text = editQuestion.getAnswer();            
+        {
+            try {
+                QuestionID = int.Parse(QID.Text);
+                editQuestion = editQuestion.fetchQuestion(QuestionID);
+                addQuestionT.Text = editQuestion.getQuestion();
+                AddOption1.Text = editQuestion.getOption1();
+                AddOption2.Text = editQuestion.getOption2();
+                addAnswer.Text = editQuestion.getAnswer();
+            }catch(Exception)
+            {
+                MessageBox.Show("Please ensure field is not empty");
+            }
+                   
         }
 
+        //update question on database
         private void UpdateQuestion_Click(object sender, EventArgs e)
         {
-            addquestion = addQuestionT.Text;
-            addoption1 = AddOption1.Text;
-            addoption2 = AddOption2.Text;
-            addanswer = addAnswer.Text;
-            QuestionID = int.Parse(QID.Text);
-            admin.editQuestion(addquestion, addoption1, addoption2, addanswer, QuestionID);
-            showQuestions();
-            Utilities.ResetAllControls(this);
+            try { addquestion = addQuestionT.Text;
+                addoption1 = AddOption1.Text;
+                addoption2 = AddOption2.Text;
+                addanswer = addAnswer.Text;
+                QuestionID = int.Parse(QID.Text);
+                admin.editQuestion(addquestion, addoption1, addoption2, addanswer, QuestionID);
+                showQuestions();
+                Utilities.ClearPanels(groupBox1);
+            }
+            catch(Exception)
+            {
+                MessageBox.Show("Please Ensure all Fields are valid");
+            }
+            
         }
 
+        //logout button 
         private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();

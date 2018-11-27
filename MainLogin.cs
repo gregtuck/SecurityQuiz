@@ -20,6 +20,7 @@ namespace SecurityQuiz
         {
             InitializeComponent();
         }
+        
         private void LOGIN_Click(object sender, EventArgs e)
         {
             try {

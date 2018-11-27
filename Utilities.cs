@@ -5,39 +5,22 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+// This class is used to clear text from Admn Panel text boxes
 namespace SecurityQuiz
 {
     class Utilities
     {
-        public static void ResetAllControls(Control form)
+        public static void ClearPanels (GroupBox GB)
         {
-            foreach (Control control in form.Controls)
+            foreach (Control control in GB.Controls)
             {
-                if (control is TextBox)
+                if(control is TextBox)
                 {
-                    TextBox textBox = (TextBox)control;
-                    textBox.Text = null;
-                }
-
-                if (control is ComboBox)
-                {
-                    ComboBox comboBox = (ComboBox)control;
-                    if (comboBox.Items.Count > 0)
-                        comboBox.SelectedIndex = 0;
-                }
-
-                if (control is CheckBox)
-                {
-                    CheckBox checkBox = (CheckBox)control;
-                    checkBox.Checked = false;
-                }
-
-                if (control is ListBox)
-                {
-                    ListBox listBox = (ListBox)control;
-                    listBox.ClearSelected();
+                    TextBox txtbx = (TextBox)control;
+                    txtbx.Text = null;
                 }
             }
+            
         }
     }
 }

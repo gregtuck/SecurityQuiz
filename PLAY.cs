@@ -165,6 +165,7 @@ namespace SecurityQuiz
             getQuestions();           
         }
 
+        //minimum highscore needed to get on leaderboard
         public int minHS()
         {
             hs.fetchHighScores();
@@ -172,7 +173,7 @@ namespace SecurityQuiz
             Console.WriteLine(MHS);
             return MHS;
         }
-
+        //check current player's score against top 5th score
         public void isLeader(int score)
         {
             if (score > minHighScore)

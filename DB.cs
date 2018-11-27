@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.Data.SqlTypes;
 using System.Data;
 
+// class is used throughout entire application to save duplicate code when interactin with database
 namespace SecurityQuiz
 {
     class DB

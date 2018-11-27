@@ -25,6 +25,7 @@ namespace SecurityQuiz
             return victoryMessage;
         }
 
+        //get victory message from game database
         public string fetchVictoryMessage(string victory)
         {
 

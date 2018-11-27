@@ -54,6 +54,7 @@ namespace SecurityQuiz
             return newQ;           
         }
         
+        //return all questions in an array structure
         public Question[] FetchAll()
         {
             List<Question> listQuestions = new List<Question>();            

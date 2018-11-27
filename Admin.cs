@@ -19,19 +19,26 @@ namespace SecurityQuiz
         {
             try
             {
-                SqlConnection con = connect.connection;
+                if (question == "" || option1 == "" || option2 == "" || answer == "")
+                {
+                    MessageBox.Show("Invalid Input, Ensure all Fields are filled");
+                }
+                else
+                {
+                    SqlConnection con = connect.connection;
 
-                con.Open();
+                    con.Open();
 
-                SqlCommand cmd = new SqlCommand("INSERT INTO GAMESEC_APP.QUESTIONS (question_text, option_1, option_2, answer) values (@value1, @value2, @value3, @value4)", con);
+                    SqlCommand cmd = new SqlCommand("INSERT INTO GAMESEC_APP.QUESTIONS (question_text, option_1, option_2, answer) values (@value1, @value2, @value3, @value4)", con);
 
-                cmd.Parameters.AddWithValue("@value1", question);
-                cmd.Parameters.AddWithValue("@value2", option1);
-                cmd.Parameters.AddWithValue("@value3", option2);
-                cmd.Parameters.AddWithValue("@value4", answer);
-                cmd.ExecuteNonQuery();
-                con.Close();
-
+                    cmd.Parameters.AddWithValue("@value1", question);
+                    cmd.Parameters.AddWithValue("@value2", option1);
+                    cmd.Parameters.AddWithValue("@value3", option2);
+                    cmd.Parameters.AddWithValue("@value4", answer);
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                    
+                }
             }catch(Exception)
             {
                 MessageBox.Show("Could not add new question to database");
@@ -83,6 +90,10 @@ namespace SecurityQuiz
         {          
             try
             {
+                if (q == ""||one == ""||two =="" || a=="")
+                {
+                    MessageBox.Show("Please ensure that all fields are valid");
+                }
                 SqlConnection con = connect.connection;
                 con.Open();
                 SqlCommand cmd = new SqlCommand("UPDATE GAMESEC_APP.QUESTIONS SET question_text = @value1, option_1 = @value2, option_2 = @value3, answer = @value4 WHERE question_id = @value5", con);
